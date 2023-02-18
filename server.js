@@ -1,13 +1,10 @@
 var fs = require("fs");
-
- function createFile(event, context) {
-   fs.writeFile("/tmp/db.json", "testing", function (err) {
-    if (err) {
-        context.fail("writeFile failed: " + err);
-    } else {
-        context.succeed("writeFile succeeded");
-     
-        // See https://github.com/typicode/json-server#module
+fs.writeFile("/tmp/db.json", "testing", function (err) {
+  if (err) {
+      context.fail("writeFile failed: " + err);
+  } else {
+      context.succeed("writeFile succeeded");
+      // See https://github.com/typicode/json-server#module
         const jsonServer = require('json-server')
         const server = jsonServer.create()
         const router = jsonServer.router('/tmp/db.json')
@@ -26,9 +23,12 @@ var fs = require("fs");
 
         // Export the Server API
         module.exports = server
-    }
-  });
- };
+  }
+});
+//  function createFile(event, context) {
+   
+//  };
 
-createFile();
+// createFile();
 
+        
