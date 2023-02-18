@@ -1,3 +1,16 @@
+var fs = require("fs");
+
+ function createFile(event, context) {
+   fs.writeFile("/tmp/db.json", "testing", function (err) {
+    if (err) {
+        context.fail("writeFile failed: " + err);
+    } else {
+        context.succeed("writeFile succeeded");
+    }
+  });
+ };
+
+createFile();
 // See https://github.com/typicode/json-server#module
 const jsonServer = require('json-server')
 const server = jsonServer.create()
